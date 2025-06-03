@@ -204,6 +204,7 @@ The following plots are generated and saved in the `model_evaluation_graphs` dir
 ## Results
 
 The model achieved a test accuracy of approximately 94.01%. The classification report indicates strong performance across both classes, with high precision, recall, and F1-scores for identifying both Pneumonia and Normal cases. The ROC AUC and Average Precision scores (visible in the generated plots) further confirm the model's strong discriminatory power.
+
 Usage
 
 This project provides a pre-trained CNN model for pneumonia detection and a FastAPI application to serve predictions. You can use it out-of-the-box or modify and retrain the model.
