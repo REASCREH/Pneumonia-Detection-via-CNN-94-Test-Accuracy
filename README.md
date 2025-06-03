@@ -189,26 +189,98 @@ The following plots are generated and saved in the `model_evaluation_graphs` dir
 * * ![confusion_matrix](https://github.com/REASCREH/Pneumonia-Detection-via-CNN-94-Test-Accuracy/blob/main/confusion_matrix.png)
 
 * `roc_curve.png`: Receiver Operating Characteristic curve.
+* * * ![roc_curve](https://github.com/REASCREH/Pneumonia-Detection-via-CNN-94-Test-Accuracy/blob/main/roc_curve.png)
+
 * `precision_recall_curve.png`: Precision-Recall curve.
+* * * * ![precision_recall_curve](https://github.com/REASCREH/Pneumonia-Detection-via-CNN-94-Test-Accuracy/blob/main/precision_recall_curve.png)
+
 * `class_distribution.png`: Bar plots comparing actual and predicted class distributions.
+* * * * * ![class_distribution](https://github.com/REASCREH/Pneumonia-Detection-via-CNN-94-Test-Accuracy/blob/main/class_distribution.png)
+
 * `probability_distribution.png`: Histogram of prediction probabilities.
+* * * * * * ![probability_distribution](https://github.com/REASCREH/Pneumonia-Detection-via-CNN-94-Test-Accuracy/blob/main/probability_distribution.png)
+
 
 ## Results
 
 The model achieved a test accuracy of approximately 94.01%. The classification report indicates strong performance across both classes, with high precision, recall, and F1-scores for identifying both Pneumonia and Normal cases. The ROC AUC and Average Precision scores (visible in the generated plots) further confirm the model's strong discriminatory power.
+Usage
 
-## Usage
+This project provides a pre-trained CNN model for pneumonia detection and a FastAPI application to serve predictions. You can use it out-of-the-box or modify and retrain the model.
+
+Running the Application Locally
+
+To run the pneumonia detection application on your local machine:
+
+Clone the Repository:
+
+Start by cloning this GitHub repository to your local machine:
+
+Bash
+
+git clone https://github.com/REASCREH/Pneumonia-Detection-via-CNN-94-Test-Accuracy.git
+cd Pneumonia-Detection-via-CNN-94-Test-Accuracy
+Set Up Your Environment:
+Ensure you have Python installed (Python 3.8+ recommended). Then, install the necessary libraries. You can find all required dependencies in the requirements.txt file.
+
+Bash
+
+pip install -r requirements.txt
+
+Model Availability:
+
+The pre-trained model, pneumonia_detection_model.h5, is already included in the repository. The FastAPI application (app.py) is configured to load this model from the root directory.
+
+Run the FastAPI Application:
+
+Navigate to the root directory of the cloned repository in your terminal and start the FastAPI application using Uvicorn:
+
+Bash
+
+uvicorn app:app --reload
+
+You should see output indicating the server is running, typically at http://127.0.0.1:8000.
+
+Access the Web Interface:
+
+Open your web browser and go to http://127.0.0.1:8000. You'll find a user-friendly interface where you can upload chest X-ray images and get instant predictions.
 
 
+Retraining or Modifying the Model
 
-## Usage/Examples
+If you wish to improve the model's performance, experiment with different architectures, or train on new data, you can do so by running the original Kaggle notebook and saving a new version of the model.
 
-```javascript
-import Component from 'my-project'
+Access the Kaggle Notebook:
 
-function App() {
-  return <Component />
-}
-```
+Go to the Kaggle notebook where this model was trained: Pneumonia Detection via CNN - 94% Test Accuracy.
 
-/
+Make Changes:
+
+You can modify the notebook's code to:
+
+Adjust the CNN architecture (e.g., add/remove layers, change filter counts).
+
+Tweak hyperparameters (e.g., learning rate, batch size, number of epochs).
+
+Experiment with different data augmentation techniques.
+
+Incorporate additional datasets (if available and compatible).
+
+Train and Save the New Model:
+
+After making your desired changes, re-run the notebook to train the model. Ensure that the final step saves the trained model with the filename pneumonia_detection_model.h5. The relevant line in the notebook would be something like:
+
+Python
+
+model.save('pneumonia_detection_model.h5')
+
+This will save the new version of your model as an output of the Kaggle notebook.
+
+Download and Replace:
+
+Once the notebook run is complete and the model is saved, download the pneumonia_detection_model.h5 file from your Kaggle notebook's output. Then, replace the existing pneumonia_detection_model.h5 file in your local GitHub repository with this newly trained version.
+
+
+Restart the FastAPI Application:
+
+If your FastAPI application is running, stop it (Ctrl+C in the terminal) and restart it using uvicorn app:app --reload. The application will automatically load your new model, reflecting any performance improvements or changes you've made.
