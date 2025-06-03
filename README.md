@@ -183,7 +183,11 @@ The model's performance was evaluated using the following metrics on the combine
 The following plots are generated and saved in the `model_evaluation_graphs` directory to provide a visual understanding of the model's performance:
 
 * `training_history.png`: Plots of training and validation accuracy and loss over epochs.
+* ![training_history](https://github.com/REASCREH/Pneumonia-Detection-via-CNN-94-Test-Accuracy/blob/main/training_history.png)
+
 * `confusion_matrix.png`: A heatmap showing the confusion matrix.
+* * ![confusion_matrix](https://github.com/REASCREH/Pneumonia-Detection-via-CNN-94-Test-Accuracy/blob/main/confusion_matrix.png)
+
 * `roc_curve.png`: Receiver Operating Characteristic curve.
 * `precision_recall_curve.png`: Precision-Recall curve.
 * `class_distribution.png`: Bar plots comparing actual and predicted class distributions.
@@ -207,3 +211,4 @@ function App() {
 }
 ```
 
+/
