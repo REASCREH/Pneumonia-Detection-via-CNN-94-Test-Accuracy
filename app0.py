@@ -71,7 +71,7 @@ async def read_root():
             <h2>Model Performance (on test set):</h2>
             <ul>
                 <li><strong>Loss:</strong> 0.1677</li>
-                <li><strong>Accuracy:</strong> 93.14%</li>
+                <li><strong>Accuracy:</strong> 94.14%</li>
             </ul>
             
             <p>The model achieved good performance, with 95% precision and recall for detecting Pneumonia and 89% precision and 90% recall for detecting Normal cases on the test set.</p>
@@ -119,7 +119,7 @@ async def predict_image(file: UploadFile = File(...)):
         prediction = model.predict(input_image)[0][0]
 
         result_text = ""
-        if prediction >= 0.5: # Assuming 0.5 is the threshold for binary classification
+        if prediction <= 0.5: # Assuming 0.5 is the threshold for binary classification
             result_text = "PNEUMONIA NOT PRESENT"
         else:
             result_text = "PNEUMONIA PRESENT"
