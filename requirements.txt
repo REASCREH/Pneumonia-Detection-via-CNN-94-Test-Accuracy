@@ -7,6 +7,6 @@ fastapi==0.115.11
 uvicorn==0.34.0
 Pillow==10.4.0
 # scikit-learn==1.6.1 # Uncomment if truly needed for any pre/post-processing
-gunicorn==24.0.0
-uvicorn-workers==0.2.0
-anyio==4.3.0
+gunicorn==23.0.0  # or upgrade to 24.0.0
+
+anyio>=4.3.0  # keeps current 4.6.0
