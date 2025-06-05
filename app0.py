@@ -9,7 +9,7 @@ import io
 app = FastAPI()
 
 # Define the path to your saved model
-model_path = r"C:\Users\Qamar\Downloads\pneumonia_detection_model.h5"
+model_path ="pneumonia_detection_model.h5""
 
 # Load the trained model
 try:
