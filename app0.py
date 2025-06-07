@@ -53,7 +53,7 @@ def predict_pneumonia(image_bytes):
         # Convert PIL image to NumPy array
         img_arr = np.array(pil_image)
 
-        # Resize the image to img_size x img_size
+        # Resize the image to img_size x img_size using OpenCV (cv2)
         resized_arr = cv2.resize(img_arr, (img_size, img_size))
 
         # Reshape for the model (add batch dimension and channel dimension)
