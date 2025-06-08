@@ -1,42 +1,41 @@
 import streamlit as st
 import tensorflow as tf
-import cv2
 import numpy as np
+import cv2
 from PIL import Image
 
-# Title and description
-st.title("Pneumonia Detection from Chest X-ray")
-st.write("Upload a chest X-ray image and the model will classify it as **NORMAL** or **PNEUMONIA**.")
+# ✅ Must be the first Streamlit command
+st.set_page_config(page_title="Pneumonia Detection", layout="centered")
 
-# Load model
+st.title("🩺 Pneumonia Detection from Chest X-rays")
+
+# Load the trained model
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("pneumonia_detection_model.h5")
-    return model
+    model_path = "pneumonia_detection_model.h5"
+    return tf.keras.models.load_model(model_path)
 
 model = load_model()
 
-# Preprocess function
-def preprocess_image(image: Image.Image):
-    image = image.convert('L')  # Convert to grayscale
-    image = image.resize((150, 150))
-    image_array = np.array(image).reshape(1, 150, 150, 1) / 255.0
-    return image_array
+# Preprocess uploaded image
+def preprocess_image(uploaded_file):
+    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+    img = cv2.imdecode(file_bytes, cv2.IMREAD_GRAYSCALE)
+    img = cv2.resize(img, (150, 150))
+    img = img.reshape(1, 150, 150, 1) / 255.0
+    return img
 
-# Upload image
-uploaded_file = st.file_uploader("Upload Chest X-ray Image", type=["jpg", "jpeg", "png"])
+# Image uploader
+uploaded_file = st.file_uploader("Upload a chest X-ray image (JPG or PNG)", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
-    # Display image
-    image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.image(uploaded_file, caption="Uploaded X-ray Image", use_column_width=True)
 
-    # Preprocess and predict
-    processed_image = preprocess_image(image)
-    prediction = model.predict(processed_image)[0][0]
-    result = "PNEUMONIA" if prediction > 0.5 else "NORMAL"
+    # Predict
+    img_array = preprocess_image(uploaded_file)
+    prediction = model.predict(img_array)[0][0]
+    result = "🫁 PNEUMONIA" if prediction > 0.5 else "✅ NORMAL"
     confidence = prediction if prediction > 0.5 else 1 - prediction
 
-    # Show result
-    st.markdown(f"### Prediction: **{result}**")
-    st.markdown(f"### Confidence: **{confidence*100:.2f}%**")
+    st.markdown(f"### Prediction: `{result}`")
+    st.markdown(f"**Confidence:** `{confidence * 100:.2f}%`")
