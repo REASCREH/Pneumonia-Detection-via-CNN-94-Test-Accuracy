@@ -2,4 +2,4 @@ Streamlit==1.45.1
 NumPy== 1.26.4
 OpenCV== 4.11.0
 TensorFlow==2.18.0
-Pillow (PIL)==10.4.0
+Pillow==10.4.0
