@@ -1,5 +1,6 @@
 Streamlit==1.45.1
-NumPy== 1.26.4
-OpenCV== 4.11.0
+NumPy== 1.27.0
+opencv-python==4.11.0 # Corrected package name
+
 TensorFlow==2.18.0
 Pillow==10.4.0
