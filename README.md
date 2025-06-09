@@ -282,6 +282,3 @@ Download and Replace:
 Once the notebook run is complete and the model is saved, download the pneumonia_detection_model.h5 file from your Kaggle notebook's output. Then, replace the existing pneumonia_detection_model.h5 file in your local GitHub repository with this newly trained version.
 
 
-Restart the FastAPI Application:
-
-If your FastAPI application is running, stop it (Ctrl+C in the terminal) and restart it using uvicorn app:app --reload. The application will automatically load your new model, reflecting any performance improvements or changes you've made.
